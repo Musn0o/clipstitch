@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+projects/
+config.json
+gradio_cached_examples/
+*.log
