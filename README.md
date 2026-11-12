@@ -1,11 +1,38 @@
 # ClipStitch
 
+**Local AI-assisted video assembly for short-form content** — Python, Gradio, FFmpeg, TTS and LLM APIs.
+
 Make 30+ second videos with free AI video generators that only give you
 5-second clips. ClipStitch plans the scenes for you, generates the voiceover,
 and stitches your downloaded clips into one finished video - no editing skills,
 no paid subscriptions.
 
 **Cost: $0. Everything runs on your computer using free services.**
+
+## Projektüberblick (DE)
+
+ClipStitch automatisiert die Vorbereitung kurzer Videos: Ein Skript wird in
+Szenen aufgeteilt, für jede Szene wird ein Prompt erzeugt, die Voiceover-
+Spur wird per TTS generiert und die heruntergeladenen KI-Clips werden mit
+FFmpeg zu einem fertigen Video zusammengesetzt. Die Planung kann über einen
+LLM-Anbieter (Gemini/OpenRouter) oder vollständig manuell erfolgen.
+
+**Technischer Fokus:** Prompt-Planung, lokale Projektverwaltung, TTS-
+Integration, FFmpeg-Assembly, Crossfades und ein browserbasiertes Gradio-UI.
+
+## Architektur
+
+```mermaid
+flowchart LR
+    S[Script] --> P[Scene Planner]
+    P --> L[Shot List + Prompts]
+    P --> T[TTS Voiceover]
+    C[Downloaded Clips] --> A[FFmpeg Assembler]
+    L --> A
+    T --> A
+    A --> F[final.mp4]
+    P -. optional .-> LLM[Gemini / OpenRouter]
+```
 
 ---
 
